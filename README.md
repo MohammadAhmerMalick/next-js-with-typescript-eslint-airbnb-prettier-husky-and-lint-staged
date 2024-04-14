@@ -1,17 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and on top of that it includes [configurations](https://gist.github.com/MohammadAhmerMalick/8475a869766d038e6923dabb8ba86847) for ESLint, Airbnb, Prettier, Husky and Lint Staged.
+
+## Note
+
+If we want the Eslint to fix the staged files then modify `buildEslintCommand` function in `.lintstagedrc.js` file to:
+
+```js
+const buildEslintCommand = (filenames) =>
+  `next lint --fix --file ${filenames
+    .map((f) => path.relative(process.cwd(), f))
+    .join(' --file ')}`
+```
+
+## Source
+
+If you prefer to do all the configurations manually then follow [This Tutorial](https://gist.github.com/MohammadAhmerMalick/8475a869766d038e6923dabb8ba86847) where we will create Next.js project with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and do all the configurations manually on top of that.
 
 ## Getting Started
 
-First, run the development server:
+Install the dependencies:
+
+```
+npm i
+```
+
+then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
